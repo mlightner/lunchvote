@@ -1,0 +1,22 @@
+<h1>Listing restaurant_types</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Code</th>
+  </tr>
+
+<% for restaurant_type in @restaurant_types %>
+  <tr>
+    <td><%=h restaurant_type.name %></td>
+    <td><%=h restaurant_type.code %></td>
+    <td><%= link_to 'Show', restaurant_type %></td>
+    <td><%= link_to 'Edit', edit_restaurant_type_path(restaurant_type) %></td>
+    <td><%= link_to 'Destroy', restaurant_type, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New restaurant_type', new_restaurant_type_path %>

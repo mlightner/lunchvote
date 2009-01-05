@@ -1,0 +1,22 @@
+<h1>Listing lunches</h1>
+
+<table>
+  <tr>
+    <th>Restaurant</th>
+    <th>Comments</th>
+  </tr>
+
+<% for lunches in @lunches %>
+  <tr>
+    <td><%=h lunches.restaurant_id %></td>
+    <td><%=h lunches.comments %></td>
+    <td><%= link_to 'Show', lunches %></td>
+    <td><%= link_to 'Edit', edit_lunches_path(lunches) %></td>
+    <td><%= link_to 'Destroy', lunches, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New lunches', new_lunches_path %>

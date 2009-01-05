@@ -1,0 +1,13 @@
+<p>
+  <b>Restaurant:</b>
+  <%=h @lunches.restaurant_id %>
+</p>
+
+<p>
+  <b>Comments:</b>
+  <%=h @lunches.comments %>
+</p>
+
+
+<%= link_to 'Edit', edit_lunches_path(@lunches) %> |
+<%= link_to 'Back', lunches_path %>

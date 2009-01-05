@@ -1,0 +1,816 @@
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (3.6ms)[0m   [0;1mCREATE TABLE `schema_migrations` (`version` varchar(255) NOT NULL) ENGINE=InnoDB[0m
+  [4;35;1mSQL (476.7ms)[0m   [0mCREATE UNIQUE INDEX `unique_schema_migrations` ON `schema_migrations` (`version`)[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to CreateUsers (20081230233105)
+  [4;36;1mSQL (64.6ms)[0m   [0;1mCREATE TABLE `users` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `name` varchar(255), `login` varchar(255) NOT NULL, `crypted_password` varchar(255) NOT NULL, `password_salt` varchar(255) NOT NULL, `persistence_token` varchar(255) NOT NULL, `single_access_token` varchar(255) NOT NULL, `perishable_token` varchar(255) NOT NULL, `login_count` int(11) DEFAULT 0 NOT NULL, `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20081230233105')[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.8ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1mdescribe `users`[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSHOW KEYS FROM `users`[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+Migrating to CreateUsers (20081230233105)
+Migrating to CreateRestaurants (20081230234043)
+  [4;35;1mSQL (12.5ms)[0m   [0mCREATE TABLE `restaurants` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `restaurant_type_id` int(11), `name` varchar(255), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20081230234043')[0m
+Migrating to CreateVotes (20081231000936)
+  [4;35;1mSQL (116.2ms)[0m   [0mCREATE TABLE `votes` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `restaurant_id` int(11), `user_id` int(11), `comments` text, `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;36;1mSQL (51.2ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20081231000936')[0m
+Migrating to CreateRestaurantTypes (20090105073424)
+  [4;35;1mSQL (102.4ms)[0m   [0mCREATE TABLE `restaurant_types` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `name` varchar(255), `code` varchar(255), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20090105073424')[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mSHOW FIELDS FROM `restaurant_types`[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mdescribe `restaurant_types`[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSHOW KEYS FROM `restaurant_types`[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mSHOW FIELDS FROM `restaurants`[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mdescribe `restaurants`[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSHOW KEYS FROM `restaurants`[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mdescribe `users`[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSHOW KEYS FROM `users`[0m
+  [4;35;1mSQL (1.4ms)[0m   [0mSHOW FIELDS FROM `votes`[0m
+  [4;36;1mSQL (0.9ms)[0m   [0;1mdescribe `votes`[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSHOW KEYS FROM `votes`[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+Migrating to CreateUsers (20081230233105)
+Migrating to CreateRestaurants (20081230234043)
+Migrating to CreateVotes (20081231000936)
+Migrating to CreateRestaurantTypes (20090105073424)
+Migrating to CreateLunches (20090105074323)
+  [4;35;1mSQL (27.4ms)[0m   [0mCREATE TABLE `lunches` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `restaurant_id` int(11), `comments` text, `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20090105074323')[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mSHOW FIELDS FROM `lunches`[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mdescribe `lunches`[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSHOW KEYS FROM `lunches`[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mSHOW FIELDS FROM `restaurant_types`[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mdescribe `restaurant_types`[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSHOW KEYS FROM `restaurant_types`[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSHOW FIELDS FROM `restaurants`[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mdescribe `restaurants`[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSHOW KEYS FROM `restaurants`[0m
+  [4;35;1mSQL (0.6ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mdescribe `users`[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSHOW KEYS FROM `users`[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSHOW FIELDS FROM `votes`[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mdescribe `votes`[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSHOW KEYS FROM `votes`[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+Migrating to CreateUsers (20081230233105)
+Migrating to CreateRestaurants (20081230234043)
+Migrating to CreateVotes (20081231000936)
+Migrating to CreateRestaurantTypes (20090105073424)
+Migrating to CreateLunches (20090105074439)
+  [4;35;1mSQL (80.0ms)[0m   [0mCREATE TABLE `lunches` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `restaurant_id` int(11), `comments` text, `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20090105074439')[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mSHOW FIELDS FROM `lunches`[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mdescribe `lunches`[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSHOW KEYS FROM `lunches`[0m
+  [4;35;1mSQL (0.6ms)[0m   [0mSHOW FIELDS FROM `restaurant_types`[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mdescribe `restaurant_types`[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSHOW KEYS FROM `restaurant_types`[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSHOW FIELDS FROM `restaurants`[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mdescribe `restaurants`[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSHOW KEYS FROM `restaurants`[0m
+  [4;35;1mSQL (0.8ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1mdescribe `users`[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mSHOW KEYS FROM `users`[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1mSHOW FIELDS FROM `votes`[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mdescribe `votes`[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSHOW KEYS FROM `votes`[0m
+
+
+Processing ApplicationController#index (for 98.210.117.192 at 2009-01-05 02:46:46) [GET]
+
+
+ActionController::RoutingError (No route matches "/" with {:method=>:get}):
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/routing/recognition_optimisation.rb:66:in `recognize_path'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/routing/route_set.rb:386:in `recognize'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/dispatcher.rb:182:in `handle_request'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/dispatcher.rb:110:in `dispatch_unlocked'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/dispatcher.rb:123:in `dispatch'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/dispatcher.rb:122:in `synchronize'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/dispatcher.rb:122:in `dispatch'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/dispatcher.rb:132:in `dispatch_cgi'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/dispatcher.rb:39:in `dispatch'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/bin/../lib/mongrel/rails.rb:76:in `process'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/bin/../lib/mongrel/rails.rb:74:in `synchronize'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/bin/../lib/mongrel/rails.rb:74:in `process'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:159:in `process_client'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:158:in `each'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:158:in `process_client'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:285:in `run'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:285:in `initialize'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:285:in `new'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:285:in `run'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:268:in `initialize'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:268:in `new'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:268:in `run'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel/configurator.rb:282:in `run'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel/configurator.rb:281:in `each'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel/configurator.rb:281:in `run'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/bin/mongrel_rails:128:in `run'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel/command.rb:212:in `run'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/bin/mongrel_rails:281
+    /usr/lib/ruby/gems/1.8/gems/activesupport-2.2.2/lib/active_support/dependencies.rb:142:in `load_without_new_constant_marking'
+    /usr/lib/ruby/gems/1.8/gems/activesupport-2.2.2/lib/active_support/dependencies.rb:142:in `load'
+    /usr/lib/ruby/gems/1.8/gems/activesupport-2.2.2/lib/active_support/dependencies.rb:521:in `new_constants_in'
+    /usr/lib/ruby/gems/1.8/gems/activesupport-2.2.2/lib/active_support/dependencies.rb:142:in `load'
+    /usr/lib/ruby/gems/1.8/gems/rails-2.2.2/lib/commands/servers/mongrel.rb:64
+    /usr/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:31:in `gem_original_require'
+    /usr/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:31:in `require'
+    /usr/lib/ruby/gems/1.8/gems/activesupport-2.2.2/lib/active_support/dependencies.rb:153:in `require'
+    /usr/lib/ruby/gems/1.8/gems/activesupport-2.2.2/lib/active_support/dependencies.rb:521:in `new_constants_in'
+    /usr/lib/ruby/gems/1.8/gems/activesupport-2.2.2/lib/active_support/dependencies.rb:153:in `require'
+    /usr/lib/ruby/gems/1.8/gems/rails-2.2.2/lib/commands/server.rb:49
+    /usr/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:31:in `gem_original_require'
+    /usr/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:31:in `require'
+    ./script/server:3
+
+Rendering /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/templates/rescues/layout.erb (not_found)
+
+
+Processing UsersController#index (for 98.210.117.192 at 2009-01-05 02:46:54) [GET]
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mUser Columns (1.2ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.3ms)[0m   [0;1mSELECT * FROM `users` [0m
+Rendering template within layouts/users
+Rendering users/index
+Completed in 10ms (View: 2, DB: 2) | 200 OK [http://redradiant.com/users]
+
+
+Processing UsersController#index (for 98.210.117.192 at 2009-01-05 02:49:12) [GET]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mUser Columns (0.9ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.2ms)[0m   [0mSELECT * FROM `users` [0m
+Rendering template within layouts/users
+Rendering users/index
+Completed in 9ms (View: 2, DB: 1) | 200 OK [http://redradiant.com/users]
+
+
+Processing ApplicationController#index (for 98.210.117.192 at 2009-01-05 02:49:58) [GET]
+
+
+NameError (undefined local variable or method `active_scaffold' for UsersController:Class):
+    /app/controllers/users_controller.rb:3
+    /usr/lib/ruby/gems/1.8/gems/activesupport-2.2.2/lib/active_support/dependencies.rb:382:in `load_without_new_constant_marking'
+    /usr/lib/ruby/gems/1.8/gems/activesupport-2.2.2/lib/active_support/dependencies.rb:382:in `load_file'
+    /usr/lib/ruby/gems/1.8/gems/activesupport-2.2.2/lib/active_support/dependencies.rb:521:in `new_constants_in'
+    /usr/lib/ruby/gems/1.8/gems/activesupport-2.2.2/lib/active_support/dependencies.rb:381:in `load_file'
+    /usr/lib/ruby/gems/1.8/gems/activesupport-2.2.2/lib/active_support/dependencies.rb:256:in `require_or_load'
+    /usr/lib/ruby/gems/1.8/gems/activesupport-2.2.2/lib/active_support/dependencies.rb:427:in `load_missing_constant'
+    /usr/lib/ruby/gems/1.8/gems/activesupport-2.2.2/lib/active_support/dependencies.rb:77:in `const_missing'
+    /usr/lib/ruby/gems/1.8/gems/activesupport-2.2.2/lib/active_support/dependencies.rb:89:in `const_missing'
+    /usr/lib/ruby/gems/1.8/gems/activesupport-2.2.2/lib/active_support/inflector.rb:352:in `constantize'
+    /usr/lib/ruby/gems/1.8/gems/activesupport-2.2.2/lib/active_support/inflector.rb:351:in `each'
+    /usr/lib/ruby/gems/1.8/gems/activesupport-2.2.2/lib/active_support/inflector.rb:351:in `constantize'
+    /usr/lib/ruby/gems/1.8/gems/activesupport-2.2.2/lib/active_support/core_ext/string/inflections.rb:162:in `constantize'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/routing/route_set.rb:388:in `recognize'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/dispatcher.rb:182:in `handle_request'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/dispatcher.rb:110:in `dispatch_unlocked'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/dispatcher.rb:123:in `dispatch'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/dispatcher.rb:122:in `synchronize'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/dispatcher.rb:122:in `dispatch'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/dispatcher.rb:132:in `dispatch_cgi'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/dispatcher.rb:39:in `dispatch'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/bin/../lib/mongrel/rails.rb:76:in `process'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/bin/../lib/mongrel/rails.rb:74:in `synchronize'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/bin/../lib/mongrel/rails.rb:74:in `process'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:159:in `process_client'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:158:in `each'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:158:in `process_client'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:285:in `run'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:285:in `initialize'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:285:in `new'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:285:in `run'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:268:in `initialize'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:268:in `new'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:268:in `run'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel/configurator.rb:282:in `run'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel/configurator.rb:281:in `each'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel/configurator.rb:281:in `run'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/bin/mongrel_rails:128:in `run'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel/command.rb:212:in `run'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/bin/mongrel_rails:281
+    /usr/lib/ruby/gems/1.8/gems/activesupport-2.2.2/lib/active_support/dependencies.rb:142:in `load_without_new_constant_marking'
+    /usr/lib/ruby/gems/1.8/gems/activesupport-2.2.2/lib/active_support/dependencies.rb:142:in `load'
+    /usr/lib/ruby/gems/1.8/gems/activesupport-2.2.2/lib/active_support/dependencies.rb:521:in `new_constants_in'
+    /usr/lib/ruby/gems/1.8/gems/activesupport-2.2.2/lib/active_support/dependencies.rb:142:in `load'
+    /usr/lib/ruby/gems/1.8/gems/rails-2.2.2/lib/commands/servers/mongrel.rb:64
+    /usr/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:31:in `gem_original_require'
+    /usr/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:31:in `require'
+    /usr/lib/ruby/gems/1.8/gems/activesupport-2.2.2/lib/active_support/dependencies.rb:153:in `require'
+    /usr/lib/ruby/gems/1.8/gems/activesupport-2.2.2/lib/active_support/dependencies.rb:521:in `new_constants_in'
+    /usr/lib/ruby/gems/1.8/gems/activesupport-2.2.2/lib/active_support/dependencies.rb:153:in `require'
+    /usr/lib/ruby/gems/1.8/gems/rails-2.2.2/lib/commands/server.rb:49
+    /usr/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:31:in `gem_original_require'
+    /usr/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:31:in `require'
+    ./script/server:3
+
+Rendered /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/templates/rescues/_trace (63.8ms)
+Rendered /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/templates/rescues/_request_and_response (0.6ms)
+Rendering /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/templates/rescues/layout.erb (internal_server_error)
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mUser Columns (0.9ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+
+
+Processing UsersController#index (for 98.210.117.192 at 2009-01-05 02:56:25) [GET]
+  [4;36;1mSQL (14.1ms)[0m   [0;1mSELECT count(DISTINCT `users`.id) AS count_all FROM `users` LEFT OUTER JOIN `votes` ON votes.user_id = users.id [0m
+  [4;35;1mUser Load (0.4ms)[0m   [0mSELECT `users`.* FROM `users` ORDER BY users.`id` ASC LIMIT 0, 15[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT `users`.* FROM `users` ORDER BY users.`id` ASC LIMIT 0, 15[0m
+Rendering template within layouts/users
+Rendering users/list
+Rendered _list_header (1.5ms)
+Rendered _list_column_headings (6.5ms)
+Rendered _messages (0.2ms)
+Rendered _list (9.9ms)
+Completed in 55ms (View: 17, DB: 16) | 200 OK [http://redradiant.com/users]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mUser Columns (0.9ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+
+
+Processing UsersController#index (for 98.210.117.192 at 2009-01-05 02:58:43) [GET]
+  [4;35;1mSQL (0.3ms)[0m   [0mSELECT count(DISTINCT `users`.id) AS count_all FROM `users` LEFT OUTER JOIN `votes` ON votes.user_id = users.id [0m
+  [4;36;1mUser Load (0.2ms)[0m   [0;1mSELECT `users`.* FROM `users` ORDER BY users.`id` ASC LIMIT 0, 15[0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT `users`.* FROM `users` ORDER BY users.`id` ASC LIMIT 0, 15[0m
+Rendering template within layouts/users
+Rendering users/list
+Rendered _list_header (0.9ms)
+Rendered _list_column_headings (5.6ms)
+Rendered _messages (0.3ms)
+Rendered _list (9.4ms)
+Completed in 23ms (View: 15, DB: 2) | 200 OK [http://redradiant.com/users]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mUser Columns (0.9ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+
+
+Processing UsersController#index (for 98.210.117.192 at 2009-01-05 02:58:47) [GET]
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSELECT count(DISTINCT `users`.id) AS count_all FROM `users` LEFT OUTER JOIN `votes` ON votes.user_id = users.id [0m
+  [4;35;1mUser Load (0.2ms)[0m   [0mSELECT `users`.* FROM `users` ORDER BY users.`id` ASC LIMIT 0, 15[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT `users`.* FROM `users` ORDER BY users.`id` ASC LIMIT 0, 15[0m
+Rendering template within layouts/users
+Rendering users/list
+Rendered _list_header (0.9ms)
+Rendered _list_column_headings (5.5ms)
+Rendered _messages (0.2ms)
+Rendered _list (8.5ms)
+Completed in 22ms (View: 14, DB: 2) | 200 OK [http://redradiant.com/users]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mUser Columns (0.9ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+
+
+Processing UsersController#new (for 98.210.117.192 at 2009-01-05 02:58:53) [GET]
+Rendering template within layouts/users
+Rendering users/create_form
+Rendered _messages (0.1ms)
+Rendered _form_messages (1.0ms)
+Rendered _form_attribute (0.4ms)
+Rendered _form_attribute (0.3ms)
+Rendered _form_attribute (0.3ms)
+Rendered _form_attribute (0.3ms)
+Rendered _form_attribute (0.3ms)
+Rendered _form_attribute (0.6ms)
+Rendered _form_attribute (1.0ms)
+  [4;35;1mVote Columns (0.8ms)[0m   [0mSHOW FIELDS FROM `votes`[0m
+
+
+ActionView::TemplateError (VotesController missing ActiveScaffold) on line #14 of vendor/plugins/active_scaffold/frontends/default/views/_form_association.rhtml:
+11: -%>
+12: <h5><%= column.label -%> (<%= link_to_visibility_toggle(:default_visible => !column.collapsed) -%>)</h5>
+13: <div <%= 'style="display: none;"' if column.collapsed -%>>
+14: <%= render :partial => subform_partial_for_column(column), :locals => {:column => column, :parent_record => parent_record, :associated => associated} %>
+15: <% unless show_blank_record -%>
+16: <% @record = column.association.klass.new -%>
+17: <%= hidden_field_tag "record#{column_scope(column)}", nil, :id => nil %>
+
+    vendor/plugins/active_scaffold/lib/active_scaffold.rb:112:in `each'
+    vendor/plugins/active_scaffold/lib/active_scaffold.rb:112:in `active_scaffold_controller_for'
+    vendor/plugins/active_scaffold/lib/active_scaffold/helpers/view_helpers.rb:28:in `active_scaffold_controller_for'
+    vendor/plugins/active_scaffold/lib/active_scaffold/helpers/form_column_helpers.rb:196:in `override_subform_partial'
+    vendor/plugins/active_scaffold/lib/active_scaffold/helpers/form_column_helpers.rb:191:in `override_subform_partial?'
+    vendor/plugins/active_scaffold/lib/active_scaffold/helpers/form_column_helpers.rb:240:in `subform_partial_for_column'
+    vendor/plugins/active_scaffold/frontends/default/views/_form_association.rhtml:14
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_view/renderable.rb:39:in `send'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_view/renderable.rb:39:in `render'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_view/renderable_partial.rb:20:in `render'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/benchmarking.rb:26:in `benchmark'
+    /usr/lib/ruby/gems/1.8/gems/activesupport-2.2.2/lib/active_support/core_ext/benchmark.rb:8:in `realtime'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/benchmarking.rb:26:in `benchmark'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_view/renderable_partial.rb:19:in `render'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_view/template.rb:73:in `render_template'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_view/renderable_partial.rb:45:in `render_partial'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_view/partials.rb:152:in `render_partial'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_view/base.rb:258:in `render_without_active_scaffold'
+    vendor/plugins/active_scaffold/lib/extensions/action_view_rendering.rb:61:in `render'
+    vendor/plugins/active_scaffold/frontends/default/views/_form.rhtml:10
+    vendor/plugins/active_scaffold/lib/active_scaffold/data_structures/action_columns.rb:69:in `each'
+    vendor/plugins/active_scaffold/lib/active_scaffold/data_structures/action_columns.rb:56:in `each'
+    vendor/plugins/active_scaffold/frontends/default/views/_form.rhtml:2
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_view/renderable.rb:39:in `send'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_view/renderable.rb:39:in `render'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_view/renderable_partial.rb:20:in `render'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/benchmarking.rb:26:in `benchmark'
+    /usr/lib/ruby/gems/1.8/gems/activesupport-2.2.2/lib/active_support/core_ext/benchmark.rb:8:in `realtime'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/benchmarking.rb:26:in `benchmark'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_view/renderable_partial.rb:19:in `render'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_view/template.rb:73:in `render_template'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_view/renderable_partial.rb:45:in `render_partial'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_view/partials.rb:152:in `render_partial'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_view/base.rb:258:in `render_without_active_scaffold'
+    vendor/plugins/active_scaffold/lib/extensions/action_view_rendering.rb:61:in `render'
+    vendor/plugins/active_scaffold/frontends/default/views/_create_form.rhtml:37
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_view/renderable.rb:39:in `send'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_view/renderable.rb:39:in `render'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_view/renderable_partial.rb:20:in `render'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/benchmarking.rb:26:in `benchmark'
+    /usr/lib/ruby/gems/1.8/gems/activesupport-2.2.2/lib/active_support/core_ext/benchmark.rb:8:in `realtime'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/benchmarking.rb:26:in `benchmark'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_view/renderable_partial.rb:19:in `render'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_view/template.rb:73:in `render_template'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_view/renderable_partial.rb:45:in `render_partial'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_view/partials.rb:152:in `render_partial'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_view/base.rb:258:in `render_without_active_scaffold'
+    vendor/plugins/active_scaffold/lib/extensions/action_view_rendering.rb:61:in `render'
+    vendor/plugins/active_scaffold/frontends/default/views/create_form.rhtml:3
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_view/renderable.rb:39:in `send'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_view/renderable.rb:39:in `render'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_view/template.rb:73:in `render_template'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_view/base.rb:256:in `render_without_active_scaffold'
+    vendor/plugins/active_scaffold/lib/extensions/action_view_rendering.rb:61:in `render'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_view/base.rb:367:in `_render_with_layout'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_view/base.rb:254:in `render_without_active_scaffold'
+    vendor/plugins/active_scaffold/lib/extensions/action_view_rendering.rb:61:in `render'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/base.rb:1174:in `render_for_file'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/base.rb:905:in `render_without_benchmark'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/benchmarking.rb:51:in `render_without_active_scaffold'
+    /usr/lib/ruby/gems/1.8/gems/activesupport-2.2.2/lib/active_support/core_ext/benchmark.rb:8:in `realtime'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/benchmarking.rb:51:in `render_without_active_scaffold'
+    vendor/plugins/active_scaffold/lib/extensions/action_controller_rendering.rb:13:in `render'
+    vendor/plugins/active_scaffold/lib/active_scaffold/actions/create.rb:16:in `new'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/mime_responds.rb:135:in `call'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/mime_responds.rb:135:in `custom'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/mime_responds.rb:164:in `call'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/mime_responds.rb:164:in `respond'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/mime_responds.rb:158:in `each'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/mime_responds.rb:158:in `respond'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/mime_responds.rb:107:in `respond_to'
+    vendor/plugins/active_scaffold/lib/active_scaffold/actions/create.rb:13:in `new'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/base.rb:1253:in `send'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/base.rb:1253:in `perform_action_without_filters'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/filters.rb:617:in `call_filters'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/filters.rb:610:in `perform_action_without_benchmark'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/benchmarking.rb:68:in `perform_action_without_rescue'
+    /usr/lib/ruby/1.8/benchmark.rb:293:in `measure'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/benchmarking.rb:68:in `perform_action_without_rescue'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/rescue.rb:136:in `perform_action_without_caching'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/caching/sql_cache.rb:13:in `perform_action'
+    /usr/lib/ruby/gems/1.8/gems/activerecord-2.2.2/lib/active_record/connection_adapters/abstract/query_cache.rb:34:in `cache'
+    /usr/lib/ruby/gems/1.8/gems/activerecord-2.2.2/lib/active_record/query_cache.rb:8:in `cache'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/caching/sql_cache.rb:12:in `perform_action'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/base.rb:524:in `send'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/base.rb:524:in `process_without_filters'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/filters.rb:606:in `process_without_session_management_support'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/session_management.rb:134:in `process'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/base.rb:392:in `process'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/dispatcher.rb:183:in `handle_request'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/dispatcher.rb:110:in `dispatch_unlocked'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/dispatcher.rb:123:in `dispatch'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/dispatcher.rb:122:in `synchronize'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/dispatcher.rb:122:in `dispatch'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/dispatcher.rb:132:in `dispatch_cgi'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/dispatcher.rb:39:in `dispatch'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel/rails.rb:76:in `process'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel/rails.rb:74:in `synchronize'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel/rails.rb:74:in `process'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:159:in `process_client'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:158:in `each'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:158:in `process_client'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:285:in `run'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:285:in `initialize'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:285:in `new'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:285:in `run'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:268:in `initialize'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:268:in `new'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:268:in `run'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel/configurator.rb:282:in `run'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel/configurator.rb:281:in `each'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel/configurator.rb:281:in `run'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/bin/mongrel_rails:128:in `run'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel/command.rb:212:in `run'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/bin/mongrel_rails:281
+    /usr/lib/ruby/gems/1.8/gems/activesupport-2.2.2/lib/active_support/dependencies.rb:142:in `load_without_new_constant_marking'
+    /usr/lib/ruby/gems/1.8/gems/activesupport-2.2.2/lib/active_support/dependencies.rb:142:in `load'
+    /usr/lib/ruby/gems/1.8/gems/activesupport-2.2.2/lib/active_support/dependencies.rb:521:in `new_constants_in'
+    /usr/lib/ruby/gems/1.8/gems/activesupport-2.2.2/lib/active_support/dependencies.rb:142:in `load'
+    /usr/lib/ruby/gems/1.8/gems/rails-2.2.2/lib/commands/servers/mongrel.rb:64
+    /usr/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:31:in `gem_original_require'
+    /usr/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:31:in `require'
+    /usr/lib/ruby/gems/1.8/gems/activesupport-2.2.2/lib/active_support/dependencies.rb:153:in `require'
+    /usr/lib/ruby/gems/1.8/gems/activesupport-2.2.2/lib/active_support/dependencies.rb:521:in `new_constants_in'
+    /usr/lib/ruby/gems/1.8/gems/activesupport-2.2.2/lib/active_support/dependencies.rb:153:in `require'
+    /usr/lib/ruby/gems/1.8/gems/rails-2.2.2/lib/commands/server.rb:49
+    /usr/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:31:in `gem_original_require'
+    /usr/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:31:in `require'
+    script/server:3
+
+Rendered /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/templates/rescues/_trace (43.7ms)
+Rendered /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/templates/rescues/_request_and_response (1.8ms)
+Rendering /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/templates/rescues/layout.erb (internal_server_error)
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mUser Columns (1.0ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+
+
+Processing UsersController#new (for 98.210.117.192 at 2009-01-05 03:04:54) [GET]
+Rendering template within layouts/users
+Rendering users/create_form
+Rendered _messages (0.2ms)
+Rendered _form_messages (1.0ms)
+Rendered _form_attribute (0.4ms)
+Rendered _form_attribute (0.3ms)
+Rendered _form_attribute (0.3ms)
+Rendered _form_attribute (0.3ms)
+Rendered _form_attribute (0.3ms)
+Rendered _form_attribute (0.3ms)
+Rendered _form_attribute (0.3ms)
+  [4;36;1mVote Columns (0.9ms)[0m   [0;1mSHOW FIELDS FROM `votes`[0m
+  [4;35;1mRestaurant Columns (0.6ms)[0m   [0mSHOW FIELDS FROM `restaurants`[0m
+Rendered _form_association_header (63.8ms)
+Rendered _form_attribute (0.4ms)
+  [4;36;1mRestaurant Load (0.5ms)[0m   [0;1mSELECT * FROM `restaurants` [0m
+Rendered _form_attribute (1.3ms)
+Rendered _form_association_record (3.5ms)
+  [4;35;1mSQL (0.2ms)[0m   [0mSELECT count(*) AS count_all FROM `votes` WHERE (user_id IS NULL) [0m
+Rendered _form_association_footer (2.0ms)
+Rendered _horizontal_subform (73.8ms)
+Rendered _form_association (75.9ms)
+Rendered _form (102.0ms)
+Rendered _create_form (106.2ms)
+Completed in 113ms (View: 107, DB: 3) | 200 OK [http://redradiant.com/users/new?_method=get]
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mUser Columns (1.1ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+
+
+Processing UsersController#index (for 98.210.117.192 at 2009-01-05 03:05:01) [GET]
+  [4;36;1mSQL (0.6ms)[0m   [0;1mSELECT count(DISTINCT `users`.id) AS count_all FROM `users` LEFT OUTER JOIN `votes` ON votes.user_id = users.id [0m
+  [4;35;1mUser Load (0.4ms)[0m   [0mSELECT `users`.* FROM `users` ORDER BY users.`id` ASC LIMIT 0, 15[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT `users`.* FROM `users` ORDER BY users.`id` ASC LIMIT 0, 15[0m
+Rendering template within layouts/users
+Rendering users/list
+Rendered _list_header (1.4ms)
+Rendered _list_column_headings (5.5ms)
+Rendered _messages (0.2ms)
+Rendered _list (8.5ms)
+Completed in 27ms (View: 15, DB: 2) | 200 OK [http://redradiant.com/users]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mUser Columns (0.9ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+
+
+Processing UsersController#index (for 98.210.117.192 at 2009-01-05 03:05:55) [GET]
+  [4;35;1mSQL (0.5ms)[0m   [0mSELECT count(DISTINCT `users`.id) AS count_all FROM `users` LEFT OUTER JOIN `votes` ON votes.user_id = users.id [0m
+  [4;36;1mUser Load (0.2ms)[0m   [0;1mSELECT `users`.* FROM `users` ORDER BY users.`id` ASC LIMIT 0, 15[0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT `users`.* FROM `users` ORDER BY users.`id` ASC LIMIT 0, 15[0m
+Rendering template within layouts/application
+Rendering users/list
+Rendered _list_header (1.0ms)
+Rendered _list_column_headings (5.6ms)
+Rendered _messages (0.2ms)
+Rendered _list (9.2ms)
+Completed in 79ms (View: 17, DB: 2) | 200 OK [http://redradiant.com/users]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mUser Columns (0.9ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+
+
+Processing UsersController#new (for 98.210.117.192 at 2009-01-05 03:06:13) [GET]
+  Parameters: {"adapter"=>"_list_inline_adapter"}
+Rendered _form_attribute (0.3ms)
+Rendered _form_attribute (0.3ms)
+Rendered _form_attribute (0.3ms)
+Rendered _form_attribute (0.3ms)
+Rendered _form_attribute (0.7ms)
+Rendered _form_attribute (0.4ms)
+Rendered _form_attribute (0.3ms)
+  [4;36;1mVote Columns (0.6ms)[0m   [0;1mSHOW FIELDS FROM `votes`[0m
+  [4;35;1mRestaurant Columns (0.5ms)[0m   [0mSHOW FIELDS FROM `restaurants`[0m
+Rendered _form_association_header (65.3ms)
+Rendered _form_attribute (0.4ms)
+  [4;36;1mRestaurant Load (0.3ms)[0m   [0;1mSELECT * FROM `restaurants` [0m
+Rendered _form_attribute (0.9ms)
+Rendered _form_association_record (3.0ms)
+  [4;35;1mSQL (0.1ms)[0m   [0mSELECT count(*) AS count_all FROM `votes` WHERE (user_id IS NULL) [0m
+Rendered _form_association_footer (1.3ms)
+Rendered _horizontal_subform (73.7ms)
+Rendered _form_association (75.8ms)
+Rendered _form (99.4ms)
+Rendered _create_form (102.0ms)
+Rendering _list_inline_adapter
+Rendered _messages (0.2ms)
+Rendered _list_inline_adapter (1.7ms)
+Completed in 109ms (View: 2, DB: 0) | 200 OK [http://redradiant.com/users/new?_method=get&adapter=_list_inline_adapter]
+
+
+Processing UserSessionsController#new (for 98.210.117.192 at 2009-01-05 03:25:58) [GET]
+  Parameters: {"action"=>"new", "controller"=>"user_sessions"}
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mUser Columns (1.0ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+
+
+ActionController::UnknownAction (No action responded to new. Actions: ):
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/filters.rb:617:in `call_filters'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/filters.rb:610:in `perform_action_without_benchmark'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/benchmarking.rb:68:in `perform_action_without_rescue'
+    /usr/lib/ruby/1.8/benchmark.rb:293:in `measure'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/benchmarking.rb:68:in `perform_action_without_rescue'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/rescue.rb:136:in `perform_action_without_caching'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/caching/sql_cache.rb:13:in `perform_action'
+    /usr/lib/ruby/gems/1.8/gems/activerecord-2.2.2/lib/active_record/connection_adapters/abstract/query_cache.rb:34:in `cache'
+    /usr/lib/ruby/gems/1.8/gems/activerecord-2.2.2/lib/active_record/query_cache.rb:8:in `cache'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/caching/sql_cache.rb:12:in `perform_action'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/base.rb:524:in `send'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/base.rb:524:in `process_without_filters'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/filters.rb:606:in `process_without_session_management_support'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/session_management.rb:134:in `process'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/base.rb:392:in `process'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/dispatcher.rb:183:in `handle_request'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/dispatcher.rb:110:in `dispatch_unlocked'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/dispatcher.rb:123:in `dispatch'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/dispatcher.rb:122:in `synchronize'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/dispatcher.rb:122:in `dispatch'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/dispatcher.rb:132:in `dispatch_cgi'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/dispatcher.rb:39:in `dispatch'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/bin/../lib/mongrel/rails.rb:76:in `process'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/bin/../lib/mongrel/rails.rb:74:in `synchronize'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/bin/../lib/mongrel/rails.rb:74:in `process'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:159:in `process_client'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:158:in `each'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:158:in `process_client'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:285:in `run'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:285:in `initialize'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:285:in `new'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:285:in `run'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:268:in `initialize'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:268:in `new'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:268:in `run'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel/configurator.rb:282:in `run'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel/configurator.rb:281:in `each'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel/configurator.rb:281:in `run'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/bin/mongrel_rails:128:in `run'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel/command.rb:212:in `run'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/bin/mongrel_rails:281
+    /usr/lib/ruby/gems/1.8/gems/activesupport-2.2.2/lib/active_support/dependencies.rb:142:in `load_without_new_constant_marking'
+    /usr/lib/ruby/gems/1.8/gems/activesupport-2.2.2/lib/active_support/dependencies.rb:142:in `load'
+    /usr/lib/ruby/gems/1.8/gems/activesupport-2.2.2/lib/active_support/dependencies.rb:521:in `new_constants_in'
+    /usr/lib/ruby/gems/1.8/gems/activesupport-2.2.2/lib/active_support/dependencies.rb:142:in `load'
+    /usr/lib/ruby/gems/1.8/gems/rails-2.2.2/lib/commands/servers/mongrel.rb:64
+    /usr/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:31:in `gem_original_require'
+    /usr/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:31:in `require'
+    /usr/lib/ruby/gems/1.8/gems/activesupport-2.2.2/lib/active_support/dependencies.rb:153:in `require'
+    /usr/lib/ruby/gems/1.8/gems/activesupport-2.2.2/lib/active_support/dependencies.rb:521:in `new_constants_in'
+    /usr/lib/ruby/gems/1.8/gems/activesupport-2.2.2/lib/active_support/dependencies.rb:153:in `require'
+    /usr/lib/ruby/gems/1.8/gems/rails-2.2.2/lib/commands/server.rb:49
+    /usr/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:31:in `gem_original_require'
+    /usr/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:31:in `require'
+    ./script/server:3
+
+Rendering /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/templates/rescues/layout.erb (not_found)
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mRestaurant Columns (0.7ms)[0m   [0mSHOW FIELDS FROM `restaurants`[0m
+
+
+Processing RestaurantsController#index (for 98.210.117.192 at 2009-01-05 03:28:22) [GET]
+  Parameters: {"action"=>"index", "controller"=>"restaurants"}
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSELECT count(*) AS count_all FROM `restaurants` [0m
+  [4;35;1mRestaurant Load (0.4ms)[0m   [0mSELECT `restaurants`.* FROM `restaurants` ORDER BY restaurants.`id` ASC LIMIT 0, 15[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT `restaurants`.* FROM `restaurants` ORDER BY restaurants.`id` ASC LIMIT 0, 15[0m
+Rendering template within layouts/application
+Rendering restaurants/list
+Rendered _list_header (1.7ms)
+Rendered _list_column_headings (2.4ms)
+Rendered _messages (0.2ms)
+Rendered _list (5.0ms)
+Completed in 23ms (View: 14, DB: 2) | 200 OK [http://redradiant.com/restaurants]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mRestaurant Columns (0.6ms)[0m   [0;1mSHOW FIELDS FROM `restaurants`[0m
+
+
+Processing RestaurantsController#new (for 98.210.117.192 at 2009-01-05 03:28:46) [GET]
+  Parameters: {"action"=>"new", "_method"=>"get", "adapter"=>"_list_inline_adapter", "controller"=>"restaurants"}
+Rendered _form_attribute (0.4ms)
+Rendered _form (1.7ms)
+Rendered _create_form (4.7ms)
+Rendering _list_inline_adapter
+Rendered _messages (0.2ms)
+Rendered _list_inline_adapter (1.6ms)
+Completed in 11ms (View: 2, DB: 0) | 200 OK [http://redradiant.com/restaurants/new?_method=get&adapter=_list_inline_adapter]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mRestaurant Columns (0.7ms)[0m   [0;1mSHOW FIELDS FROM `restaurants`[0m
+
+
+Processing RestaurantsController#index (for 98.210.117.192 at 2009-01-05 03:28:49) [GET]
+  Parameters: {"action"=>"index", "controller"=>"restaurants"}
+  [4;35;1mSQL (0.3ms)[0m   [0mSELECT count(*) AS count_all FROM `restaurants` [0m
+  [4;36;1mRestaurant Load (0.1ms)[0m   [0;1mSELECT `restaurants`.* FROM `restaurants` ORDER BY restaurants.`id` ASC LIMIT 0, 15[0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT `restaurants`.* FROM `restaurants` ORDER BY restaurants.`id` ASC LIMIT 0, 15[0m
+Rendering template within layouts/application
+Rendering restaurants/list
+Rendered _list_header (0.9ms)
+Rendered _list_column_headings (2.0ms)
+Rendered _messages (0.2ms)
+Rendered _list (4.5ms)
+Completed in 15ms (View: 11, DB: 1) | 200 OK [http://redradiant.com/restaurants]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mRestaurantType Columns (0.9ms)[0m   [0mSHOW FIELDS FROM `restaurant_types`[0m
+
+
+Processing RestaurantTypesController#index (for 98.210.117.192 at 2009-01-05 03:28:58) [GET]
+  Parameters: {"action"=>"index", "controller"=>"restaurant_types"}
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSELECT count(*) AS count_all FROM `restaurant_types` [0m
+  [4;35;1mRestaurantType Load (0.2ms)[0m   [0mSELECT `restaurant_types`.* FROM `restaurant_types` ORDER BY restaurant_types.`id` ASC LIMIT 0, 15[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT `restaurant_types`.* FROM `restaurant_types` ORDER BY restaurant_types.`id` ASC LIMIT 0, 15[0m
+Rendering template within layouts/application
+Rendering restaurant_types/list
+Rendered _list_header (1.4ms)
+Rendered _list_column_headings (2.6ms)
+Rendered _messages (0.1ms)
+Rendered _list (5.1ms)
+Completed in 17ms (View: 12, DB: 2) | 200 OK [http://redradiant.com/restaurant_types]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mRestaurant Columns (0.7ms)[0m   [0;1mSHOW FIELDS FROM `restaurants`[0m
+
+
+Processing RestaurantsController#show (for 98.210.117.192 at 2009-01-05 03:28:58) [GET]
+  Parameters: {"action"=>"show", "authenticity_token"=>"97339f4073571bb3e3d844606465f18e9e806026", "id"=>"update_table", "page"=>"1", "controller"=>"restaurants", "sort"=>"created_at", "sort_direction"=>"ASC"}
+  [4;35;1mRestaurant Load (0.4ms)[0m   [0mSELECT * FROM `restaurants` WHERE (`restaurants`.`id` = 0) [0m
+
+
+ActiveRecord::RecordNotFound (Couldn't find Restaurant with ID=update_table):
+    /usr/lib/ruby/gems/1.8/gems/activerecord-2.2.2/lib/active_record/base.rb:1528:in `find_one'
+    /usr/lib/ruby/gems/1.8/gems/activerecord-2.2.2/lib/active_record/base.rb:1511:in `find_from_ids'
+    /usr/lib/ruby/gems/1.8/gems/activerecord-2.2.2/lib/active_record/base.rb:590:in `find'
+    /vendor/plugins/active_scaffold/lib/active_scaffold/finder.rb:125:in `find_if_allowed'
+    /vendor/plugins/active_scaffold/lib/active_scaffold/actions/show.rb:25:in `do_show'
+    /vendor/plugins/active_scaffold/lib/active_scaffold/actions/show.rb:8:in `show'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/base.rb:1253:in `send'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/base.rb:1253:in `perform_action_without_filters'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/filters.rb:617:in `call_filters'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/filters.rb:610:in `perform_action_without_benchmark'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/benchmarking.rb:68:in `perform_action_without_rescue'
+    /usr/lib/ruby/1.8/benchmark.rb:293:in `measure'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/benchmarking.rb:68:in `perform_action_without_rescue'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/rescue.rb:136:in `perform_action_without_caching'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/caching/sql_cache.rb:13:in `perform_action'
+    /usr/lib/ruby/gems/1.8/gems/activerecord-2.2.2/lib/active_record/connection_adapters/abstract/query_cache.rb:34:in `cache'
+    /usr/lib/ruby/gems/1.8/gems/activerecord-2.2.2/lib/active_record/query_cache.rb:8:in `cache'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/caching/sql_cache.rb:12:in `perform_action'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/base.rb:524:in `send'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/base.rb:524:in `process_without_filters'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/filters.rb:606:in `process_without_session_management_support'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/session_management.rb:134:in `process'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/base.rb:392:in `process'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/dispatcher.rb:183:in `handle_request'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/dispatcher.rb:110:in `dispatch_unlocked'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/dispatcher.rb:123:in `dispatch'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/dispatcher.rb:122:in `synchronize'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/dispatcher.rb:122:in `dispatch'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/dispatcher.rb:132:in `dispatch_cgi'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/dispatcher.rb:39:in `dispatch'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/bin/../lib/mongrel/rails.rb:76:in `process'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/bin/../lib/mongrel/rails.rb:74:in `synchronize'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/bin/../lib/mongrel/rails.rb:74:in `process'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:159:in `process_client'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:158:in `each'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:158:in `process_client'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:285:in `run'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:285:in `initialize'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:285:in `new'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:285:in `run'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:268:in `initialize'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:268:in `new'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:268:in `run'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel/configurator.rb:282:in `run'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel/configurator.rb:281:in `each'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel/configurator.rb:281:in `run'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/bin/mongrel_rails:128:in `run'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel/command.rb:212:in `run'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/bin/mongrel_rails:281
+    /usr/lib/ruby/gems/1.8/gems/activesupport-2.2.2/lib/active_support/dependencies.rb:142:in `load_without_new_constant_marking'
+    /usr/lib/ruby/gems/1.8/gems/activesupport-2.2.2/lib/active_support/dependencies.rb:142:in `load'
+    /usr/lib/ruby/gems/1.8/gems/activesupport-2.2.2/lib/active_support/dependencies.rb:521:in `new_constants_in'
+    /usr/lib/ruby/gems/1.8/gems/activesupport-2.2.2/lib/active_support/dependencies.rb:142:in `load'
+    /usr/lib/ruby/gems/1.8/gems/rails-2.2.2/lib/commands/servers/mongrel.rb:64
+    /usr/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:31:in `gem_original_require'
+    /usr/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:31:in `require'
+    /usr/lib/ruby/gems/1.8/gems/activesupport-2.2.2/lib/active_support/dependencies.rb:153:in `require'
+    /usr/lib/ruby/gems/1.8/gems/activesupport-2.2.2/lib/active_support/dependencies.rb:521:in `new_constants_in'
+    /usr/lib/ruby/gems/1.8/gems/activesupport-2.2.2/lib/active_support/dependencies.rb:153:in `require'
+    /usr/lib/ruby/gems/1.8/gems/rails-2.2.2/lib/commands/server.rb:49
+    /usr/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:31:in `gem_original_require'
+    /usr/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:31:in `require'
+    ./script/server:3
+
+Rendered /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/templates/rescues/_trace (88.6ms)
+Rendered /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/templates/rescues/_request_and_response (2.4ms)
+Rendering /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/templates/rescues/layout.erb (not_found)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mRestaurant Columns (0.6ms)[0m   [0mSHOW FIELDS FROM `restaurants`[0m
+
+
+Processing RestaurantsController#index (for 98.210.117.192 at 2009-01-05 03:29:07) [GET]
+  Parameters: {"action"=>"index", "controller"=>"restaurants"}
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSELECT count(*) AS count_all FROM `restaurants` [0m
+  [4;35;1mRestaurant Load (0.1ms)[0m   [0mSELECT `restaurants`.* FROM `restaurants` ORDER BY restaurants.`id` ASC LIMIT 0, 15[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT `restaurants`.* FROM `restaurants` ORDER BY restaurants.`id` ASC LIMIT 0, 15[0m
+Rendering template within layouts/application
+Rendering restaurants/list
+Rendered _list_header (1.0ms)
+Rendered _list_column_headings (2.0ms)
+Rendered _messages (0.1ms)
+Rendered _list (4.4ms)
+Completed in 15ms (View: 11, DB: 1) | 200 OK [http://redradiant.com/restaurants]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mRestaurant Columns (1.3ms)[0m   [0;1mSHOW FIELDS FROM `restaurants`[0m
+
+
+Processing RestaurantsController#new (for 98.210.117.192 at 2009-01-05 03:29:11) [GET]
+  Parameters: {"action"=>"new", "_method"=>"get", "adapter"=>"_list_inline_adapter", "controller"=>"restaurants"}
+Rendered _form_attribute (0.3ms)
+Rendered _form (1.7ms)
+Rendered _create_form (4.2ms)
+Rendering _list_inline_adapter
+Rendered _messages (0.2ms)
+Rendered _list_inline_adapter (1.7ms)
+Completed in 10ms (View: 2, DB: 0) | 200 OK [http://redradiant.com/restaurants/new?_method=get&adapter=_list_inline_adapter]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mRestaurant Columns (0.7ms)[0m   [0;1mSHOW FIELDS FROM `restaurants`[0m
+
+
+Processing RestaurantsController#create (for 98.210.117.192 at 2009-01-05 03:29:18) [POST]
+  Parameters: {"commit"=>"Create", "action"=>"create", "authenticity_token"=>"97339f4073571bb3e3d844606465f18e9e806026", "controller"=>"restaurants", "record"=>{"name"=>"Red Robin"}}
+  [4;35;1mSQL (0.3ms)[0m   [0mBEGIN[0m
+  [4;36;1mRestaurant Create (0.4ms)[0m   [0;1mINSERT INTO `restaurants` (`name`, `restaurant_type_id`, `created_at`, `updated_at`) VALUES('Red Robin', NULL, '2009-01-05 08:29:18', '2009-01-05 08:29:18')[0m
+  [4;35;1mSQL (41.1ms)[0m   [0mCOMMIT[0m
+Rendering restaurants/create.rjs
+Rendered _list_actions (1.9ms)
+Rendered _list_record (78.5ms)
+Completed in 129ms (View: 82, DB: 43) | 200 OK [http://redradiant.com/restaurants]
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mRestaurant Columns (0.7ms)[0m   [0mSHOW FIELDS FROM `restaurants`[0m
+
+
+Processing RestaurantsController#show (for 98.210.117.192 at 2009-01-05 03:29:22) [GET]
+  Parameters: {"action"=>"show", "_method"=>"get", "authenticity_token"=>"97339f4073571bb3e3d844606465f18e9e806026", "adapter"=>"_list_inline_adapter", "id"=>"1", "controller"=>"restaurants"}
+  [4;36;1mRestaurant Load (0.3ms)[0m   [0;1mSELECT * FROM `restaurants` WHERE (`restaurants`.`id` = 1) [0m
+Rendered _show_columns (0.9ms)
+Rendered _show (2.7ms)
+Rendering _list_inline_adapter
+Rendered _messages (0.2ms)
+Rendered _list_inline_adapter (1.7ms)
+Completed in 9ms (View: 2, DB: 0) | 200 OK [http://redradiant.com/restaurants/1?_method=get&authenticity_token=97339f4073571bb3e3d844606465f18e9e806026&adapter=_list_inline_adapter]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mRestaurantType Columns (0.6ms)[0m   [0;1mSHOW FIELDS FROM `restaurant_types`[0m
+
+
+Processing RestaurantTypesController#index (for 98.210.117.192 at 2009-01-05 03:29:28) [GET]
+  Parameters: {"action"=>"index", "controller"=>"restaurant_types"}
+  [4;35;1mSQL (0.3ms)[0m   [0mSELECT count(*) AS count_all FROM `restaurant_types` [0m
+  [4;36;1mRestaurantType Load (0.1ms)[0m   [0;1mSELECT `restaurant_types`.* FROM `restaurant_types` ORDER BY restaurant_types.`id` ASC LIMIT 0, 15[0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT `restaurant_types`.* FROM `restaurant_types` ORDER BY restaurant_types.`id` ASC LIMIT 0, 15[0m
+Rendering template within layouts/application
+Rendering restaurant_types/list
+Rendered _list_header (1.0ms)
+Rendered _list_column_headings (2.3ms)
+Rendered _messages (0.1ms)
+Rendered _list (4.7ms)
+Completed in 17ms (View: 11, DB: 1) | 200 OK [http://redradiant.com/restaurant_types]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mRestaurantType Columns (0.8ms)[0m   [0mSHOW FIELDS FROM `restaurant_types`[0m
+
+
+Processing RestaurantTypesController#new (for 98.210.117.192 at 2009-01-05 03:29:32) [GET]
+  Parameters: {"action"=>"new", "_method"=>"get", "adapter"=>"_list_inline_adapter", "controller"=>"restaurant_types"}
+Rendered _form_attribute (0.4ms)
+Rendered _form_attribute (0.3ms)
+Rendered _form (2.4ms)
+Rendered _create_form (5.5ms)
+Rendering _list_inline_adapter
+Rendered _messages (0.2ms)
+Rendered _list_inline_adapter (1.7ms)
+Completed in 12ms (View: 2, DB: 0) | 200 OK [http://redradiant.com/restaurant_types/new?_method=get&adapter=_list_inline_adapter]

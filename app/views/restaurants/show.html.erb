@@ -1,0 +1,13 @@
+<p>
+  <b>Restaurant type:</b>
+  <%=h @restaurant.restaurant_type_id %>
+</p>
+
+<p>
+  <b>Name:</b>
+  <%=h @restaurant.name %>
+</p>
+
+
+<%= link_to 'Edit', edit_restaurant_path(@restaurant) %> |
+<%= link_to 'Back', restaurants_path %>
